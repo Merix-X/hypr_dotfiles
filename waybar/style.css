@@ -1,0 +1,37 @@
+window#waybar {
+background: rgba(30, 30, 46, 0.5);
+border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+color: #cdd6f2;
+font-family: "JetBrainsMono Nerd Font";
+}
+#workspaces button { padding: 0 5px; color: #89b4fa; }
+#workspaces button.active { color: #f5c2e7; }
+
+#battery {
+    background-color: #313244; /* Tmavé Catppuccin pozadí */
+    color: #a6e3a1;            /* Zelená barva pro text/ikonu */
+    padding: 0 10px;
+    border-radius: 10px;
+    margin: 4px;
+}
+
+#battery.charging, #battery.plugged {
+    color: #f9e2af;            /* Žlutá barva při nabíjení */
+}
+
+@keyframes blink {
+    to {
+        background-color: #f38ba8;
+        color: #1e1e2e;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f38ba8; /* Červená při kritickém stavu */
+    color: #1e1e2e;
+    animation-name: blink;      /* Baterka bude blikat */
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
