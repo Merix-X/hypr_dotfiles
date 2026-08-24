@@ -9,11 +9,12 @@ configuration {
 @theme "/dev/null"
 
 * {
-    bg-dim: #101010;
-    bg-box: #1c1b1a;
-    fg-main: #c8c093;
+    bg-dim: #0e0e10;
+    bg-box: #18181a;
+    fg-main: #e2d9b5;    /* Hachiko krémová pro text */
     fg-sub: #716e61;
-    accent: #ff9e3b;
+    accent: #ff0055;     /* Neonově červená pro hranice a vybrané položky */
+    accent-dark: #8b001e;/* Vínová */
 
     background-color: transparent;
     text-color: @fg-main;

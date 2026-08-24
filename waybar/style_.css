@@ -1,35 +1,79 @@
+/* Základní reset - čistá bílá/stříbrná místo žluté */
 * {
     font-family: "JetBrainsMono Nerd Font";
-    font-size: 11px;
+    font-size: 12px;
     font-weight: bold;
-    color: #d0d0d0;
+    color: #e6e6e6;
 }
 
 window#waybar {
-    background: #121212;
-    border-bottom: 1px solid #1793d1;
+    background: #0e0e10;
+    border-bottom: 2px solid #8b001e; /* Temně vínová spodní linka */
 }
 
+/* Plochy (Workspaces) */
 #workspaces button {
     padding: 0 6px;
-    color: #555555;
+    color: #4a4a52; /* Tmavá šedá pro neaktivní */
 }
 
 #workspaces button.active {
-    color: #1793d1;
-    background: #1e1e1e;
+    color: #ffffff;
+    background: #8b001e; /* Vínové pozadí */
+    border-bottom: 2px solid #ff0055; /* Neónově červený akcent */
     border-radius: 4px;
 }
 
-#clock, #cpu, #memory, #network, #temperature, #battery {
-    background-color: #1e1e1e;
-    color: #d0d0d0;
+/* Hodiny - Hlavní dominantní prvek */
+#clock {
+    background-color: #1a0a0f;
+    color: #ffffff;
+    border: 1px solid #ff0055; /* Zářivá červená */
     padding: 0 8px;
     border-radius: 4px;
     margin: 3px 2px;
-    border: 1px solid #2a2a2a;
+}
+
+/* CPU a Paměť - Střední červené akcenty */
+#cpu {
+    background-color: #160c0e;
+    color: #f0f0f5;
+    border: 1px solid #c4123a; /* Střední rubínová */
+    padding: 0 8px;
+    border-radius: 4px;
+    margin: 3px 2px;
+}
+
+#memory {
+    background-color: #160c0e;
+    color: #f0f0f5;
+    border: 1px solid #990e2d; /* Tmavší rubínová */
+    padding: 0 8px;
+    border-radius: 4px;
+    margin: 3px 2px;
+}
+
+/* Síť a Teplota - Tlumenější tmavé akcenty */
+#network, #temperature {
+    background-color: #140e10;
+    color: #d0d0d5;
+    border: 1px solid #660a1f; /* Temná vínová */
+    padding: 0 8px;
+    border-radius: 4px;
+    margin: 3px 2px;
+}
+
+/* Baterie - Růžovo-červený odptín pro odlišení */
+#battery {
+    background-color: #140e10;
+    color: #ff6b81;
+    border: 1px solid #8b001e;
+    padding: 0 8px;
+    border-radius: 4px;
+    margin: 3px 2px;
 }
 
 #battery.charging, #battery.plugged {
-    color: #1793d1;
+    color: #ff0055;
+    border-color: #ff0055;
 }
