@@ -1,22 +1,31 @@
 [global]
-    width = 300
-    height = 100
-    offset = 30x30
-    origin = top-right
-    transparency = 10
-    frame_color = "#cba6f7" # Fialová (Mauve)
     font = JetBrainsMono Nerd Font 10
+    corner_radius = 6
+    width = (300, 420)
+    height = 150
+    offset = 12x12
+    origin = top-right
+    notification_limit = 5
+    frame_width = 2
+    separator_height = 2
+    padding = 10
+    horizontal_padding = 12
+    progress_bar_height = 8
 
 [urgency_low]
-    background = "#1e1e2e"
-    foreground = "#cdd6f4"
+    background = "#101010"
+    foreground = "#716e61"
+    frame_color = "#2a2827"
+    timeout = 4
 
 [urgency_normal]
-    background = "#1e1e2e"
-    foreground = "#cdd6f4"
-    border_color = "#cba6f7"
+    background = "#101010"
+    foreground = "#c8c093"
+    frame_color = "#ff9e3b"
+    timeout = 6
 
 [urgency_critical]
-    background = "#1e1e2e"
-    foreground = "#f38ba8" # Červená
-    frame_color = "#f38ba8"
+    background = "#101010"
+    foreground = "#ff9e3b"
+    frame_color = "#ff9e3b"
+    timeout = 0

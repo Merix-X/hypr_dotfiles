@@ -1,0 +1,87 @@
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    terminal: "kitty";
+    disable-history: false;
+    hide-scrollbar: true;
+}
+
+@theme "/dev/null"
+
+* {
+    bg-dim: #101010;
+    bg-box: #1c1b1a;
+    fg-main: #c8c093;
+    fg-sub: #716e61;
+    accent: #ff9e3b;
+
+    background-color: transparent;
+    text-color: @fg-main;
+    font: "JetBrainsMono Nerd Font 10";
+}
+
+window {
+    background-color: @bg-dim;
+    border: 2px;
+    border-color: @accent;
+    border-radius: 6px;
+    width: 460px;
+    padding: 12px;
+    location: center;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    spacing: 10px;
+}
+
+inputbar {
+    background-color: @bg-box;
+    border: 1px;
+    border-color: #2a2827;
+    border-radius: 4px;
+    padding: 8px 12px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @accent;
+    margin: 0px 8px 0px 0px;
+}
+
+entry {
+    text-color: @fg-main;
+    placeholder: "Hledat...";
+    placeholder-color: @fg-sub;
+}
+
+listview {
+    lines: 6;
+    columns: 1;
+    spacing: 4px;
+    scrollbar: false;
+}
+
+element {
+    padding: 8px 10px;
+    border-radius: 4px;
+}
+
+element selected {
+    background-color: @bg-box;
+    border: 1px;
+    border-color: @accent;
+}
+
+element-text {
+    text-color: @fg-main;
+}
+
+element-text selected {
+    text-color: @accent;
+}
+
+element-icon {
+    size: 20px;
+    margin: 0px 10px 0px 0px;
+}

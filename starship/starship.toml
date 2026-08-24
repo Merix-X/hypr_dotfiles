@@ -1,0 +1,43 @@
+# Rychlé nastavení formátu promptu
+format = """
+$os\
+$directory\
+$git_branch\
+$git_status\
+$character"""
+
+# Vypnutí nového řádku před promptem pro čistší vzhled
+add_newline = false
+
+# Arch Linux Ikona
+[os]
+format = "[$symbol ]($style)"
+style = "bold #ff0055" # Neónově červená
+disabled = false
+
+[os.symbols]
+Arch = "󰣇"
+
+# Adresář / Cesta
+[directory]
+style = "bold #e2d9b5" # Hachiko krémová
+read_only = " 󰌾"
+read_only_style = "#8b001e"
+truncation_length = 3
+truncation_symbol = "…/"
+
+# Git Větev
+[git_branch]
+symbol = "󰘬 "
+style = "bold #8b001e" # Vínově červená
+format = "on [$symbol$branch]($style) "
+
+# Git Status
+[git_status]
+style = "bold #ff0055"
+format = "[$all_status$ahead_behind]($style) "
+
+# Znak pro zadávání příkazů
+[character]
+success_symbol = "[❯](bold #ff0055)"
+error_symbol = "[❯](bold #8b001e)"

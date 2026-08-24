@@ -7,7 +7,8 @@
     "network": {
         "format-wifi": "  {essid}",
         "format-ethernet": "󰈀  {ifname}",
-        "format-disconnected": "⚠ Disconnected"
+        "format-disconnected": "⚠ Disconnected",
+        "on-click": "kitty --class floating_nmtui -e nmtui"
     },
     "cpu": {
         "format": "  {usage}% "
@@ -16,7 +17,8 @@
         "format": "  {}% "
     },
     "clock": {
-        "format": "  {:%H:%M | %d.%m. }"
+        "format": "  {:%H:%M | %d.%m. }",
+        "on-click": "kitty --class floating_cal -e calcurse"
     },
     "battery": {
         "states": {
@@ -32,6 +34,6 @@
     "temperature": {
         "critical-threshold": 80,
         "format": "{icon} {temperatureC}°C",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""]
     }
 }
