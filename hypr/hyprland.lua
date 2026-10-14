@@ -47,7 +47,10 @@ hl.config({
         gaps_out = 8,
         border_size = 2,
         col = {
-            active_border = { "rgba(ff0055ff)", "rgba(66001aff)", "45deg" },
+            active_border = {
+                colors = { "rgba(ff0055ff)", "rgba(66001aff)" },
+                angle = 45
+            },
             inactive_border = "rgba(101012ff)"
         },
         layout = "dwindle"
@@ -130,8 +133,9 @@ end
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
-hl.bind(mainMod .. " + mouse_down", hl.dsp.workspace("e+1"))
-hl.bind(mainMod .. " + mouse_up", hl.dsp.workspace("e-1"))
+-- Opraveno volání pro posun kolečkem
+hl.bind(mainMod .. " + mouse_down", hl.dsp.dispatch("workspace", "e+1"))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.dispatch("workspace", "e-1"))
 
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
