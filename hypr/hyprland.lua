@@ -133,9 +133,9 @@ end
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
--- Opraveno volání pro posun kolečkem
-hl.bind(mainMod .. " + mouse_down", hl.dsp.dispatch("workspace", "e+1"))
-hl.bind(mainMod .. " + mouse_up", hl.dsp.dispatch("workspace", "e-1"))
+-- Opraveno volání pro posun kolečkem myši
+hl.bind(mainMod .. " + mouse_down", hl.dsp.exec_cmd("hyprctl dispatch workspace e+1"))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.exec_cmd("hyprctl dispatch workspace e-1"))
 
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
