@@ -9,8 +9,8 @@ LOG_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/package-install"
 TIMESTAMP="$(date '+%Y%m%d-%H%M%S')"
 LOG_FILE="$LOG_DIR/install-$TIMESTAMP.log"
 
-PACMAN_LIST="pkglist.txt"
-AUR_LIST="aur-pkglist.txt"
+PACMAN_LIST="pkglist-pacman.txt"
+AUR_LIST="pkglist-aur.txt"
 
 PACMAN_PACKAGES=()
 AUR_PACKAGES=()
