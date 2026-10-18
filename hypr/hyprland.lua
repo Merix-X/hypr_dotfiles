@@ -408,32 +408,28 @@ hl.bind(
 -- DISPLAY BRIGHTNESS
 ----------------
 
--- These bindings require a working kernel backlight interface.
--- The current system has no device in /sys/class/backlight/.
--- They are retained as fallbacks but may do nothing until the
--- MacBook backlight driver is fixed.
-
 hl.bind(
     "XF86MonBrightnessDown",
-    hl.dsp.exec_cmd("brightnessctl set 5%-"),
+    hl.dsp.exec_cmd("brightnessctl -d nvidia_backlight set 5%-"),
     { repeating = true }
 )
 
 hl.bind(
     "XF86MonBrightnessUp",
-    hl.dsp.exec_cmd("brightnessctl set 5%+"),
+    hl.dsp.exec_cmd("brightnessctl -d nvidia_backlight set 5%+"),
     { repeating = true }
 )
 
+-- F1/F2 fallback when Fn sends ordinary function keys
 hl.bind(
     "F1",
-    hl.dsp.exec_cmd("brightnessctl set 5%-"),
+    hl.dsp.exec_cmd("brightnessctl -d nvidia_backlight set 5%-"),
     { repeating = true }
 )
 
 hl.bind(
     "F2",
-    hl.dsp.exec_cmd("brightnessctl set 5%+"),
+    hl.dsp.exec_cmd("brightnessctl -d nvidia_backlight set 5%+"),
     { repeating = true }
 )
 
