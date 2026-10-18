@@ -12,14 +12,14 @@ hl.monitor({
     output = "eDP-1",
     mode = "1920x1080@60.03",
     position = "0x0",
-    scale = 1,
+    scale = 0.8,
 })
 
 hl.monitor({
     output = "HDMI-A-1",
     mode = "1920x1200@59.95",
     position = "-1920x0",
-    scale = 1,
+    scale = 0.8,
 })
 
 ----------------
@@ -64,7 +64,7 @@ hl.on("hyprland.start", function()
 
     hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
     hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'")
-    hl.exec_cmd('swaybg -i "$HOME/Pictures/Iusearchwallpaper.png" -m fill')
+    hl.exec_cmd('swaybg -i "$HOME/Pictures/wallpapers/wallpaper.jpg" -m fill')
     hl.exec_cmd("waybar")
     hl.exec_cmd("nm-applet --indicator")
     hl.exec_cmd("blueman-applet")
@@ -201,7 +201,7 @@ hl.device({
 
 hl.bind("SUPER + Q", hl.dsp.exec_cmd(terminal))
 hl.bind("SUPER + C", hl.dsp.window.close())
-hl.bind("SUPER + M", hl.dsp.exec_cmd("if command -v hyprshutdown >/dev/null 2>&1; then hyprshutdown; else hyprctl dispatch exit; fi"))
+hl.bind("SUPER + M", hl.dsp.exec_cmd("hyprctl dispatch exit"))
 hl.bind("SUPER + E", hl.dsp.exec_cmd(fileManager))
 hl.bind("SUPER + R", hl.dsp.exec_cmd(menu))
 hl.bind("SUPER + P", hl.dsp.exec_cmd("hyprpicker -a"))
@@ -238,27 +238,38 @@ hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 -- Clipboard history.
 hl.bind("SUPER + V", hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist decode | wl-copy"))
 
--- Volume and microphone controls.
+-- Volume and microphone controls: XF86 keysyms plus MacBook function-key equivalents.
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"))
+hl.bind("F10", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
+hl.bind("F11", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
+hl.bind("F12", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
 
--- Brightness OSD controls.
+-- Brightness controls: XF86 keysyms plus MacBook function-key equivalents.
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("swayosd-client --brightness raise"), { repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("swayosd-client --brightness lower"), { repeating = true })
+hl.bind("F2", hl.dsp.exec_cmd("brightnessctl set 5%+"), { repeating = true })
+hl.bind("F1", hl.dsp.exec_cmd("brightnessctl set 5%-"), { repeating = true })
+
+-- MacBook keyboard backlight controls (requires brightnessctl and a supported kbd_backlight device).
+hl.bind("F6", hl.dsp.exec_cmd("brightnessctl -d '*::kbd_backlight' set 10%+"), { repeating = true })
+hl.bind("F5", hl.dsp.exec_cmd("brightnessctl -d '*::kbd_backlight' set 10%-"), { repeating = true })
 
 -- Media controls; available even when an input inhibitor is active.
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+hl.bind("F7", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+hl.bind("F8", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("F9", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 
 -- Custom shortcuts.
 hl.bind("SUPER + W", hl.dsp.exec_cmd("kitty --class floating_nmtui -e nmtui"))
 hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp)" - | wl-copy'))
 hl.bind("SUPER + H", hl.dsp.exec_cmd("kitty --class hypr-config -e nano ~/.config/hypr/hyprland.lua"))
-hl.bind("SUPER + O", hl.dsp.exec_cmd("kitty --class claude-code -e claude"))
 
 ----------------
 -- WINDOW RULES
